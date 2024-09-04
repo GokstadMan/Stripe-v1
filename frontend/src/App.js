@@ -1,9 +1,9 @@
 import './App.css';
 import React, {useState} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import LEDLamp from "./components/images/030024.png"
 
 function App() {
-
   const [product,setProduct] = useState({
     name: "LEDLamp no 1 from BØ",
     price: 50,
@@ -35,7 +35,8 @@ function App() {
 
   return (
     <div>
-      <h1 className='text-6xl text-center bg-lime-500'>Wonderful world of Stripe:</h1>
+      <h1 className='text-6xl text-center bg-lime-500'>Wonderful world of Stripe:</h1> <br/>
+      <img src={LEDLamp} alt='LEDLAmp'/>
       <StripeCheckout stripeKey={
         process.env.REACT_APP_KEY} 
         amount={product.price*100}
@@ -44,7 +45,7 @@ function App() {
         allowRememberMe
         token={makeCharge} 
         name='Buy LEDlamps'></StripeCheckout>
-      <br />
+      <br/> <br/>
       <button type="button" className='text-white text-xl bg-purple-800 rounded'>Buy LEDlamp for {product.price} NOK</button>
     </div>
   );
